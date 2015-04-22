@@ -20,21 +20,20 @@ public class TeddyBear {
         if (num < 42) {
             return false;
         }
-        if (num == 42) {
+        else if (num == 42) {
             return true;
         }
-        if (num % 2 ==0 && (num % 3 == 0 || num % 4 == 0) && num % 5 == 0){
-            return bear(num / 2) || bear (num-42) || bear (num - (num%10 * (num % 100)/ 10));
-        }
-        else if (num % 2 == 0 && num % 5 == 0){
+
+        if (num % 2 == 0 && num % 5 == 0 && (num % 3 != 0) && num % 4 != 0){
             return bear(num/2) ||  bear (num-42);
         }
-        else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0)){
+        else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0) && num % 5 != 0){
             return bear(num / 2) || bear (num - (num%10 * (num % 100)/ 10));
         }
-        else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0){
+        else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0 && num % 2 != 0){
             return bear (num - (num%10 * (num % 100)/ 10)) || bear(num - 42);
         }
+
         return false;
     }
 
@@ -63,12 +62,28 @@ public class TeddyBear {
         return numOfBears;
     }
 
+    public static boolean more(BufferedReader buff) throws IOException{
+        String resp = null;
+        System.out.println("Would you like to input another number(y/n)?");
+        resp = buff.readLine();
+        while (!resp.equals("n") && !resp.equals("N") && !resp.equals("y") && !resp.equals("Y")){
+            System.out.println("Invalid response. Would you like to input another number(y/n)?");
+            resp = buff.readLine();
+        }
+        if (resp.equals("y") || resp.equals("Y")){
+            return true;
+        }
+        return false;
+    }
+
     public static void main (String[] args) throws IOException{
         BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
         String resp = null;
-        System.out.println("Please enter the number of bears you want to start with: ");
-        int numOfBears = inputValidator(resp, buff);
-        String win = bear(numOfBears)? "You are able to win." : "Sorry, you are not able to win.";
-        System.out.println(win);
+        do {
+            System.out.println("Please enter the number of bears you want to start with: ");
+            int numOfBears = inputValidator(resp, buff);
+            String win = bear(numOfBears) ? "You are able to win." : "Sorry, you are not able to win.";
+            System.out.println(win);
+        }while (more(buff));
     }
 }
