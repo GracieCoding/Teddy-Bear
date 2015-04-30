@@ -62,6 +62,12 @@ public class TeddyBear {
         return numOfBears;
     }
 
+    /**
+     *
+     * @param buff A BufferedReader that reads in the user input.
+     * @return A boolean value indicating whether the user wants to input another number.
+     * @throws IOException
+     */
     public static boolean more(BufferedReader buff) throws IOException{
         String resp = null;
         System.out.println("Would you like to input another number(y/n)?");
