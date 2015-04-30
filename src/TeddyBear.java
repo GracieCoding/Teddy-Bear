@@ -25,15 +25,12 @@ public class TeddyBear {
         }
 
         if (num % 2 == 0 && num % 5 == 0){
-            System.out.println("ok");
             return bear(num/2) ||  bear (num-42);
         }
         else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0) && num % 5 != 0){
-            System.out.println("boo");
             return bear(num / 2) || bear (num - (num%10 * (num % 100)/ 10));
         }
         else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0 && num % 2 != 0 ){
-            System.out.println("yay");
             return  bear(num - 42);
         }
 
