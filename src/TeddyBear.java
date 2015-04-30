@@ -27,10 +27,10 @@ public class TeddyBear {
         if (num % 2 == 0 && num % 5 == 0){
             return bear(num/2) ||  bear (num-42);
         }
-        else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0)){
+        else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0) && num % 5 != 0){
             return bear(num / 2) || bear (num - (num%10 * (num % 100)/ 10));
         }
-        else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0 ){
+        else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0 && num % 2 != 0 ){
             return bear (num - (num%10 * (num % 100)/ 10)) || bear(num - 42);
         }
 
