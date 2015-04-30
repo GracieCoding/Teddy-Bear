@@ -24,8 +24,8 @@ public class TeddyBear {
             return true;
         }
 
-        if (num % 2 == 0 && num % 5 == 0 && (num % 3 != 0) && num % 4 != 0){
-            return bear(num/2) ||  bear (num-42);
+        if (num % 2 == 0 && num % 5 == 0 && (num % 4 == 0 || num % 3 == 0)){
+            return bear(num/2) ||  bear (num-42) || bear(num - (num%10 * (num % 100)/ 10));
         }
         else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0) && num % 5 != 0){
             return bear(num / 2) || bear (num - (num%10 * (num % 100)/ 10));
