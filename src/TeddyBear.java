@@ -32,7 +32,7 @@ public class TeddyBear {
             return (num % 10 * (num % 100 / 10) == 0) ?  bear(num / 2) :  bear (num/2) || bear (num - (num % 10 * (num % 100 / 10)));
         }
         else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0 && num % 2 != 0 ){
-            return (num % 10 * (num % 100 / 10) == 0) ?  bear(num / 2) :  bear (num/2) || bear (num - (num % 10 * (num % 100 / 10)));
+            return (num % 10 * (num % 100 / 10) == 0) ?  bear(num - 42) :  bear (num - 42) || bear (num - (num % 10 * (num % 100 / 10)));
         }
         else if (num % 3 == 0 && num % 4 != 0 && num % 2 != 0 && num % 5 != 0){
             return (num % 10 * (num % 100 /10) == 0) ? false: bear (num - (num % 10 * (num % 100 / 10)));
@@ -100,11 +100,7 @@ public class TeddyBear {
             System.out.println(win);
         }while (more(buff));
 
-        /*for (int i =244; i < 1001; i++){
-            String win = bear(i) ? "You are able to win." : "Sorry, you are not able to win.";
-            if (win.equals("You are able to win."))
-                System.out.println("i: " + i + win);
-        }*/
+
     }
 
 }
