@@ -18,6 +18,7 @@ public class TeddyBear {
      */
     public static boolean bear(int num) {
         if (num < 42) {
+
             return false;
         }
         else if (num == 42) {
@@ -27,15 +28,22 @@ public class TeddyBear {
         if (num % 2 == 0 && num % 5 == 0){
             return bear(num/2) ||  bear (num-42);
         }
-        else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0) && num % 5 != 0){
-            return bear(num / 2) || bear (num - (num%10 * (num % 100)/ 10));
+        else if (num % 2 == 0 && (num % 3 == 0 || num % 4 == 0) && num % 5 != 0 ){
+            return (num % 10 * (num % 100 / 10) == 0) ?  bear(num / 2) :  bear (num/2) || bear (num - (num % 10 * (num % 100 / 10)));
         }
         else if ((num %3 == 0 || num % 4 == 0) && num % 5 == 0 && num % 2 != 0 ){
-            return  bear(num - 42);
+            return (num % 10 * (num % 100 / 10) == 0) ?  bear(num / 2) :  bear (num/2) || bear (num - (num % 10 * (num % 100 / 10)));
+        }
+        else if (num % 3 == 0 && num % 4 != 0 && num % 2 != 0 && num % 5 != 0){
+            return (num % 10 * (num % 100 /10) == 0) ? false: bear (num - (num % 10 * (num % 100 / 10)));
+        }
+        else if (num % 5==0 && num % 2 != 0 && num % 3 != 0 && num % 4 != 0){
+            return bear (num - 42);
         }
 
-        return false;
-    }
+
+    return false;
+}
 
     /**
      *
@@ -82,7 +90,7 @@ public class TeddyBear {
         return false;
     }
 
-    public static void main (String[] args) throws IOException{
+    public static void main (String[] args)throws IOException{
         BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
         String resp = null;
         do {
@@ -91,5 +99,12 @@ public class TeddyBear {
             String win = bear(numOfBears) ? "You are able to win." : "Sorry, you are not able to win.";
             System.out.println(win);
         }while (more(buff));
+
+        /*for (int i =244; i < 1001; i++){
+            String win = bear(i) ? "You are able to win." : "Sorry, you are not able to win.";
+            if (win.equals("You are able to win."))
+                System.out.println("i: " + i + win);
+        }*/
     }
+
 }
